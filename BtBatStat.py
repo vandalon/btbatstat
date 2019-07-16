@@ -65,6 +65,7 @@ class Timer(NSObject):
     self.noDeviceImage = NSImage.alloc().initByReferencingFile_('icons/no_device.png')
     self.barImage = dict(kb = NSImage.alloc().initByReferencingFile_('icons/kb.png'),
 			 magicMouse = NSImage.alloc().initByReferencingFile_('icons/magic_mouse.png'),
+			 multitouchMouse = NSImage.alloc().initByReferencingFile_('icons/magic_mouse.png'),
 			 mightyMouse = NSImage.alloc().initByReferencingFile_('icons/mighty_mouse.png'),
 			 magicTrackpad = NSImage.alloc().initByReferencingFile_('icons/TrackpadIcon.png'))
 
@@ -105,7 +106,8 @@ class Timer(NSObject):
 
     deviceCmd = dict( mightyMouse = self.ioreg("AppleBluetoothHIDMouse","-rc"),
 	 	      magicMouse = self.ioreg("BNBMouseDevice","-rc"),
-	 	      magicTrackpad = self.ioreg("BNBTrackpadDevice","-rc"))
+	 	      magicTrackpad = self.ioreg("BNBTrackpadDevice","-rc"),
+	 	      multitouchMouse = self.ioreg("AppleDeviceManagementHIDEventService","-rc"))
     deviceCmd['kb'] = self.ioreg("AppleBluetoothHIDKeyboard","-rc")
     if not deviceCmd['kb']:
         deviceCmd['kb'] = self.ioreg("IOAppleBluetoothHIDDriver","-n")
